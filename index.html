@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="../../Contents/bootstrap.css">	
+    <link rel="stylesheet" href="../../Contents/weather-icons.min.css">
 	<link rel="stylesheet" href="style.css">	
 	<script src="../../Contents/jquery-3.1.1.js"></script>	
 	<script src="script.js"></script>
@@ -9,18 +10,23 @@
 <body>
     <div class="jumbotron">
         <div class="container text-center">
-            <h1>City, Country</h1> 
-            <p>Weather</p>
-        </div>
-        <div class="container text-center">
-            <h1>Temp</h1>
+            <h3 id="loc"></h3> 
+            <h3 id="weather">Weather</h3>
+            <h1 id="temp"></h1>
             <div class="btn-group">
-                <button class="btn-primary btn">C</button>
+                <button class="active btn-primary btn">C</button>
                 <button class="btn btn-primary">F</button>
             </div>
-            <p>Pic</p>
+            <br>
+            <img id="pic">
         </div>
 
     </div>
+    <div class="container text-center foot">
+		<footer>
+			<p>A <a href="https://www.freecodecamp.com" target="_blank" id="link1">freecodecamp</a> Project.</p>
+			<p>Written and Coded by <a href="http://codepen.io/dimasradityo/" target="_blank" id="link2">Dimas Radityo.</a></p>
+		</footer>
+	</div>
 </body>
 </html>

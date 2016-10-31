@@ -2,23 +2,24 @@
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="../../Contents/bootstrap.css">	
-    <link rel="stylesheet" href="../../Contents/weather-icons.min.css">
+    <link rel="stylesheet" href="../../Contents/weather-icons-master/css/weather-icons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">	
 	<script src="../../Contents/jquery-3.1.1.js"></script>	
 	<script src="script.js"></script>
 </head>
 <body>
-    <div class="jumbotron">
+    <div class="jumbotron jumb">
         <div class="container text-center">
             <h3 id="loc"></h3> 
-            <h3 id="weather">Weather</h3>
+            <h3 id="weather"></h3>
             <h1 id="temp"></h1>
-            <div class="btn-group">
-                <button class="active btn-primary btn">C</button>
-                <button class="btn btn-primary">F</button>
-            </div>
+            <span class="wi wi-night-sleet wi-fw"></span>
             <br>
-            <img id="pic">
+            <div class="btn-group">
+                <button disabled=true id ="cel" class="btn-default btn">C</button>
+                <button id= "fah" class="btn btn-default">F</button>
+            </div>
         </div>
 
     </div>

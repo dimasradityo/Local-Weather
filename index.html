@@ -3,6 +3,7 @@
 <head>
 	<link rel="stylesheet" href="../../Contents/bootstrap.css">	
     <link rel="stylesheet" href="../../Contents/weather-icons-master/css/weather-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">	
 	<script src="../../Contents/jquery-3.1.1.js"></script>	
@@ -11,15 +12,15 @@
 <body>
     <div class="jumbotron jumb">
         <div class="container text-center">
-            <h3 id="loc"></h3> 
+            <h3 id="loc"><strong></strong></h3> 
             <h3 id="weather"></h3>
+            <h3 id="time"></h3>
             <h1 id="temp"></h1>
-            <span class="wi wi-night-sleet wi-fw"></span>
-            <br>
-            <div class="btn-group">
+            <span class="wi"></span>
+            <br>            
                 <button disabled=true id ="cel" class="btn-default btn">C</button>
                 <button id= "fah" class="btn btn-default">F</button>
-            </div>
+            
         </div>
 
     </div>

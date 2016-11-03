@@ -20,6 +20,14 @@ body{
     margin-bottom: 10%; 
     font-size: 70px;
 }
+#cel{
+    background-color: #ACEDFF;
+    border-radius: 50%;
+}
+#fah{
+    background-color: #73877B;
+    border-radius: 50%;
+}
 .foot{
     margin-top: 2%;
 }

@@ -1,35 +1,68 @@
 body{
     font-family: 'Roboto Slab', serif;
-    background-color: #73877B;
+    background-color: black;
+}
+#weather, #loc strong{
+    color: #C1CFDA;
+    text-shadow: 2px 2px 5px grey;
+}
+#loc strong{
+    text-transform: uppercase;
+}
+.well{
+    background-color: ghostwhite;
+    min-width: 20%;
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
+    opacity: 0.5;
+}
+hr{
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+#curDate{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.init, .follow{
+    margin: 15px;
+    display: inline-block;
+}
+#time{
+    margin: 5px; 
 }
 .jumb{
     padding: 5px;
-    background-color: #ACEDFF; 
+    background-image: url('https://images.unsplash.com/photo-1424460421773-58b49adfc68a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=52d2693994cef3197175b61741f7aa6e');
+    background-size: cover;
+    background-repeat: no-repeat; 
 }
 #weather{
     margin-top: 0px;
-    margin-bottom: 10%;
-}
-#pic{
-    margin-top: 10%;
-    width: 100px;
-    height: 100px; 
+    margin-bottom: 5%;
 }
 .wi{
-    margin-top: 5%;
-    margin-bottom: 10%; 
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
     font-size: 70px;
 }
-#cel{
-    background-color: #ACEDFF;
+.btn{
+    background-color: ghostwhite;
     border-radius: 50%;
+    margin-top: 5%;
+    border: solid 1px;
 }
-#fah{
+#cel{
     background-color: #73877B;
-    border-radius: 50%;
 }
 .foot{
     margin-top: 2%;
+    color: ghostwhite;
 }
 a,a:link,a:visited
 {

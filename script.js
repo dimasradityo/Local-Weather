@@ -1,22 +1,44 @@
-$(document).ready(function() {
+$(document).ready(function() { 
     var tempC = 0;
-    var tempF = 0;    
+    var tempF = 0;
+    var more = false;    
+
+    $('.well').hide();
+    $('.follow').hide();  
+    $('#loc').hide();
+    $('.foot').hide();
+    $('#weather').hide();
+    $('.btn').hide();
+    CurTime();
     
-    function digitalClock(){
+
+    function CurTime(){
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var today = new Date();
+        var dateNow = today.getDate();
+        var month = today.getMonth();
+        var year = today.getFullYear();                
+        var d = today.getDay();
         var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
-        m = checkTime (m);
-        s = checkTime (s);
+        var m = checkTime(today.getMinutes());
+        var s = checkTime(today.getSeconds());
+        $('#curDate').html(days[d]+ ', ' +dateNow+ ' ' +months[month]+ ' ' +year);
         $('#time').html(h +':'+ m +':'+ s);  
-        console.log('oi');      
+        var t = setTimeout(CurTime, 500);     
     }
     function checkTime(t){
         if (t < 10){
             t = "0"+t;
-            return t;
         }
+        return t;
+    }    
+    function UnixTime(unix) {
+        var date = new Date(unix * 1000);
+        var h = date.getHours();
+        var m = checkTime(date.getMinutes());        
+        var format = h+ ':' +m;        
+        return format;
     }
 
     $.getJSON('http://ipinfo.io', function(data){
@@ -26,11 +48,13 @@ $(document).ready(function() {
         var sign;
         var url = 'http://api.openweathermap.org/data/2.5/weather?q=' +city+ '&APPID=51ca7bd15b048d96ecd82cd1f8c38434'+unit;
         $('strong').html(city+ ', ' +country);        
-        console.log(url);
 
         $.getJSON(url, function(json){
+            console.log(url);
             $('#weather').html(json.weather[0].description);
-            tempC = Math.round(json.main.temp);            
+            tempC = Math.round(json.main.temp);
+            tempCMin = Math.round(json.main.temp_min);
+            tempCMax = Math.round(json.main.temp_max);            
             $('#temp').html( tempC+ '&#8451');            
             $('#pic').attr('src', 'http://openweathermap.org/img/w/' +json.weather[0].icon+ '.png');
 
@@ -94,24 +118,64 @@ $(document).ready(function() {
                 default:
                     break;
             }
-            console.log(json);
+            $('#hum').html("Humidity: " +json.main.humidity+ '%');
+            $('#temp_min').html(tempCMin+ '&#8451');
+            $('#temp_max').html(tempCMax+ '&#8451');
+            $('#sunrise').html('Sunrise: ' +UnixTime(json.sys.sunrise));
+            $('#sunset').html('Sunset: ' +UnixTime(json.sys.sunset));
+
+            $('#loc').show().addClass('animated fadeInDown');
+            $('#weather').show().addClass('animated fadeInDown');
+            $('.well').show(3000).addClass('animated slideIn');
+            $('.btn').show(4000).addClass('animated slideInUp');
+            $('.foot').show(8000).addClass('animated slideInUp')
         });
 
     });
 
-    
+    $('#more').on('click', function(){        
+        if (!more){
+            $(this).html('<');
+            $('.follow').show(1000);
+            more = true;            
+        }
+        else{        
+            $(this).html('>');
+            $('.follow').hide(1000);
+            more = false;            
+        }
+    });
 
     $('#fah').on('click', function(){
-        $(this).prop('disabled', true);        
-        $('#cel').prop('disabled', false);      
+        $(this).prop('disabled', true).css({
+            'background-color': '#73877B' 
+        });        
+        $('#cel').prop('disabled', false).css({
+            'background-color': 'ghostwhite' 
+        });      
         tempF = Math.round(ConvertC(tempC));
-        $('#temp').html( tempF+ '&#8457');      
+        tempFMin = Math.round(ConvertC(tempCMin));
+        tempFMax = Math.round(ConvertC(tempCMax));
+
+        $('#temp').fadeOut(300, function () {
+            $(this).html( tempF+ '&#8457')
+        }).fadeIn(300);
+        $('#temp_min').html( tempFMin+ '&#8457');
+        $('#temp_max').html( tempFMax+ '&#8457');
     });
 
     $('#cel').on('click', function(){
-        $(this).prop('disabled', true);        
-        $('#fah').prop('disabled', false);      
-        $('#temp').html( tempC+ '&#8451');
+        $(this).prop('disabled', true).css({
+            'background-color': '#73877B' 
+        });        
+        $('#fah').prop('disabled', false).css({
+            'background-color': 'ghostwhite' 
+        });    
+        $('#temp').fadeOut(300, function () {  
+            $(this).html( tempC+ '&#8451')
+        }).fadeIn(300);
+        $('#temp_min').html( tempCMin+ '&#8451');
+        $('#temp_max').html( tempCMax+ '&#8451');        
     });
     
     function ConvertC(c){

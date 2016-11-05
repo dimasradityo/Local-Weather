@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<link rel="stylesheet" href="../../Contents/bootstrap.css">	
-    <link rel="stylesheet" href="../../Contents/weather-icons-master/css/weather-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-	<link rel="stylesheet" href="style.css">	
-	<script src="../../Contents/jquery-3.1.1.js"></script>	
+	<link rel="stylesheet" href="../../Contents/bootstrap.css">
+	<link rel="stylesheet" href="../../Contents/weather-icons-master/css/weather-icons.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="../../Contents/jquery-3.1.1.js"></script>
 	<script src="script.js"></script>
 </head>
-<body>
-    <div class="jumbotron jumb">
-        <div class="container text-center">
-            <h3 id="loc"><strong></strong></h3> 
-            <h3 id="weather"></h3>
-            <h3 id="time"></h3>
-            <h1 id="temp"></h1>
-            <span class="wi"></span>
-            <br>            
-                <button disabled=true id ="cel" class="btn-default btn">C</button>
-                <button id= "fah" class="btn btn-default">F</button>
-            
-        </div>
 
-    </div>
-    <div class="container text-center foot">
+<body>
+	<div class="jumbotron jumb">
+		<div class="container text-center">
+			<h3 id="loc"><strong></strong></h3>
+			<h3 id="weather"></h3>
+			<div class="well well-sm">
+				<h3 id ="curDate"></h3>
+				<h4 id="time"></h4>
+				<div class="init">				
+					<h1 id="temp"></h1>
+					<span class="wi infinite"></span>
+					<hr>
+					<button class="btn btn-default" id="more">></button>
+				</div>
+				<div class="follow">					
+					<h4 id="hum"></h4>
+					<h4>Min Temperature:<h4 id="temp_min"></h4></h4>
+					<h4>Max Temperature:<h4 id="temp_max"></h4></h4>
+					<h4 id="sunrise"></h4>
+					<h4 id="sunset"></h4>
+				</div>
+			</div>
+
+			<div class="buttons">
+				<button disabled=true id="cel" class="btn">C</button>
+				<button id="fah" class="btn">F</button>
+			</div>
+
+		</div>
+
+	</div>
+	<div class="container text-center foot">
 		<footer>
 			<p>A <a href="https://www.freecodecamp.com" target="_blank" id="link1">freecodecamp</a> Project.</p>
 			<p>Written and Coded by <a href="http://codepen.io/dimasradityo/" target="_blank" id="link2">Dimas Radityo.</a></p>
 		</footer>
 	</div>
 </body>
+
 </html>

@@ -3,12 +3,8 @@ $(document).ready(function() {
     var tempF = 0;
     var more = false;    
 
-    $('.well').hide();
-    $('.follow').hide();  
-    $('#loc').hide();
-    $('.foot').hide();
-    $('#weather').hide();
-    $('.btn').hide();
+    $('.hide').hide();
+    
     CurTime();
     
 
@@ -40,6 +36,13 @@ $(document).ready(function() {
         var format = h+ ':' +m;        
         return format;
     }
+    function TitleCase(str) {
+        var arr = str.split(' ');
+        for (var i = 0; i < arr.length; i++){
+            arr[i] = arr[i].replace(arr[i].charAt(0), arr[i].charAt(0).toUpperCase());
+        }
+        return arr.join(' ');
+    }
 
     $.getJSON('http://ipinfo.io', function(data){
         var city = data.city;
@@ -51,7 +54,7 @@ $(document).ready(function() {
 
         $.getJSON(url, function(json){
             console.log(url);
-            $('#weather').html(json.weather[0].description);
+            $('#weather').html(TitleCase(json.weather[0].description));
             tempC = Math.round(json.main.temp);
             tempCMin = Math.round(json.main.temp_min);
             tempCMax = Math.round(json.main.temp_max);            
@@ -117,18 +120,19 @@ $(document).ready(function() {
             
                 default:
                     break;
-            }
+            }     
+                   
+            $('#loc').removeClass('hide').show().addClass('animated fadeInDown');
+            $('#weather').removeClass('hide').show().addClass('animated fadeInDown');
+
             $('#hum').html("Humidity: " +json.main.humidity+ '%');
             $('#temp_min').html(tempCMin+ '&#8451');
             $('#temp_max').html(tempCMax+ '&#8451');
             $('#sunrise').html('Sunrise: ' +UnixTime(json.sys.sunrise));
             $('#sunset').html('Sunset: ' +UnixTime(json.sys.sunset));
 
-            $('#loc').show().addClass('animated fadeInDown');
-            $('#weather').show().addClass('animated fadeInDown');
-            $('.well').show(3000).addClass('animated slideIn');
-            $('.btn').show(4000).addClass('animated slideInUp');
-            $('.foot').show(8000).addClass('animated slideInUp')
+            
+            $('.well').removeClass('hide').show(2000).addClass('animated slideIn');                        
         });
 
     });
@@ -136,7 +140,7 @@ $(document).ready(function() {
     $('#more').on('click', function(){        
         if (!more){
             $(this).html('<');
-            $('.follow').show(1000);
+            $('.follow').removeClass('hide').show(1000);
             more = true;            
         }
         else{        
